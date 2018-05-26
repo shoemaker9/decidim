@@ -10,6 +10,8 @@
 
 - **decidim-generators**: Dummy applications not being correctly generated for external plugins. [\#3470](https://github.com/decidim/decidim/pull/3470)
 - **decidim-core**: Data picker form inputs having no bottom margin. [\#3463](https://github.com/decidim/decidim/pull/3463)
+- **decidim-core**: Date field form inputs failing to highlight errors on some edge cases. [\#3514](https://github.com/decidim/decidim/pull/3514)
+- **decidim-core**: Datetime field form inputs failing to highlight errors on some edge cases. [\#3514](https://github.com/decidim/decidim/pull/3514)
 
 ## [0.11.1](https://github.com/decidim/decidim/tree/v0.11.1)
 
