@@ -8,6 +8,8 @@
 
 **Fixed**:
 
+- **decidim-generators**: Generated application not including bootsnap.
+
 ## [0.12.0-pre](https://github.com/decidim/decidim/tree/v0.12.0-pre)
 
 **Upgrade notes (authorizations)**:
