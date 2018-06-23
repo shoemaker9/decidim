@@ -95,6 +95,31 @@ module Decidim
         end
       end
 
+      def install_all(out: STDOUT)
+        run_all(
+          "gem build %name && mv %name-%version.gem ..",
+          include_root: false,
+          out: out
+        )
+
+        new(root).run(
+          "gem build %name && gem install *.gem",
+          out: out
+        )
+      end
+
+      def uninstall_all(out: STDOUT)
+        run_all(
+          "gem uninstall %name -v %version --executables --force",
+          out: out
+        )
+
+        new(root).run(
+          "rm decidim-*.gem",
+          out: out
+        )
+      end
+
       def run_all(command, out: STDOUT, include_root: true)
         all_dirs(include_root: include_root) do |dir|
           status = new(dir).run(command, out: out)
@@ -114,8 +139,6 @@ module Decidim
       end
 
       def all_dirs(include_root: true)
-        root = File.expand_path(File.join("..", ".."), __dir__)
-
         glob = "#{root}/#{include_root ? "{decidim-*,.}" : "decidim-*"}"
 
         Dir.glob(glob)
@@ -130,7 +153,11 @@ module Decidim
       end
 
       def version_file
-        File.expand_path(File.join("..", "..", ".decidim-version"), __dir__)
+        File.join(root, ".decidim-version")
+      end
+
+      def root
+        File.expand_path(File.join("..", ".."), __dir__)
       end
     end
 
